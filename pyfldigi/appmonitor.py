@@ -155,12 +155,12 @@ class ApplicationMonitor(object):
         """
         if self.process is None:
             return False
+        p = self.process.poll()
+        if p is None:
+            return True
         else:
-            p = self.process.poll()  # will return None if not yet finished.  Will return the exit code if it has finished.
-            if p is None:
-                return False
-            else:
-                self.returncode = p
+            self.returncode = p
+            return False
 
 
 if __name__ == '__main__':

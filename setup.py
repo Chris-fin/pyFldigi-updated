@@ -50,5 +50,4 @@ setup(name='pyfldigi',
                    'Topic :: Communications :: Ham Radio'],
       keywords='fldigi ham radio hf digital cw morse rtty olivia psk ssb sdr',
       packages=find_packages(),
-      install_requires=['requests'],
       zip_safe=False)

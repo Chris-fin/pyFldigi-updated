@@ -6,7 +6,6 @@ import time
 import logging
 import threading
 import xmlrpc.client
-from .transport import RequestsTransport
 from .txmonitor import TxMonitor
 from .main import Main
 from .modem import Modem
@@ -68,7 +67,7 @@ class Client(object):
         self.ip_address = hostname
         self.port = port
         self.logger.debug('Attempting to connect to connect to fldigi at IP address=%a, port=%d, via XMP-RPC', self.ip_address, self.port)
-        self.client = xmlrpc.client.ServerProxy('http://{}:{}/'.format(self.ip_address, self.port), transport=RequestsTransport(use_builtin_types=True), allow_none=True)
+        self.client = xmlrpc.client.ServerProxy('http://{}:{}/'.format(self.ip_address, self.port), allow_none=True)
         self.main = Main(clientObj=self)
         self.modem = Modem(clientObj=self)
         self.rig = Rig(clientObj=self)
